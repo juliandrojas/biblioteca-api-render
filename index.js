@@ -4,7 +4,8 @@ import pg from 'pg';
 config()
 const app = express();
 const pool = new pg.Pool({
-  connectionString: process.env.DATABASE_URL
+  connectionString: process.env.DATABASE_URL,
+  ssl: true
 })
 app.get('/', async (req, res) => {
   const result = await pool.query("SELECT NOW()")
