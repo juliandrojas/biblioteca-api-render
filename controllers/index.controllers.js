@@ -3,19 +3,9 @@ import { dbPool } from '../app.js';
 export const getIndex = async (req, res) => {
   try {
     res.send("All right");
-    console.log("Todo bien");
   } catch (error) {
     console.error('Error:', error);
     return res.status(500).json({ error: 'Internal Server Error' });
   }
 };
 
-export const getPing = async (req, res) => {
-  try {
-    const result = await dbPool.query("SELECT NOW()");
-    return res.json(result.rows[0]);
-  } catch (error) {
-    console.error('Error:', error);
-    return res.status(500).json({ error: 'Internal Server Error' });
-  }
-};
