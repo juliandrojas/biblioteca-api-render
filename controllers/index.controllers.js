@@ -1,4 +1,4 @@
-import { pool } from '../index.js';
+import { dbPool } from '../app.js';
 
 export const getIndex = async (req, res) => {
   try {
@@ -12,7 +12,7 @@ export const getIndex = async (req, res) => {
 
 export const getPing = async (req, res) => {
   try {
-    const result = await pool.query("SELECT NOW()");
+    const result = await dbPool.query("SELECT NOW()");
     return res.json(result.rows[0]);
   } catch (error) {
     console.error('Error:', error);
