@@ -1,6 +1,14 @@
+import { config } from 'dotenv';
 import express from 'express';
+import pg from 'pg';
 import router from './routes/index.routes.js';
 const app = express();
+config()
+const pool = new pg.Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: true
+});
+export default pool;
 //Middlewares
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
