@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import { getIndex } from '../controllers/index.controllers.js'; // Ajusta la ruta según tu estructura de carpetas
+import { getUsers } from '../controllers/index.controllers.js';
 
 const router = Router();
 
-router.get('/', getIndex);
+router.get('/users', getUsers);
 
 export default router;
