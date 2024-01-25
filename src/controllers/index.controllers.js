@@ -1,4 +1,3 @@
-import { dbPool } from '../app.js';
 
 export const getIndex = async (req, res) => {
   try {

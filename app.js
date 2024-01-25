@@ -1,7 +1,7 @@
 import { config } from 'dotenv';
 import express from 'express';
 import dbPool from './index.js';
-import routes from './routes/index.routes.js';
+import routes from './src/routes/index.routes.js';
 config()
 const app = express();
 app.use('/', routes);
