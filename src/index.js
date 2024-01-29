@@ -1,8 +1,10 @@
-import cors from 'cors';
+import express from 'express';
+const app = express();
+app.listen(3000);
+/*import cors from 'cors';
 import { config } from 'dotenv';
 import express from 'express';
 import router from './routes/index.routes.js';
-
 config();
 
 const app = express();
@@ -20,3 +22,4 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port: ${PORT}`);
 });
+*/

@@ -1,7 +1,18 @@
-import db from '../db/connection.js';
-
+//import db from '../db/connection.js';
 //Create
-export const createUser = async (req, res) => {
+export const create = (req, res) => {
+  res.send("Creando empleado")
+}
+//Read
+export const read = (req, res) => {
+  res.send("Obteniendo empleados")
+}
+//Update
+export const update = (req, res) => {
+  res.send("Actualizando empleado")
+};
+//Create
+/*export const createUser = async (req, res) => {
   //Destructuring the response
   const { name, email, password } = req.body;
   db.query('INSERT INTO users (name, email, password) VALUES (?, ?)', [name, email, password]);
@@ -11,7 +22,7 @@ export const createUser = async (req, res) => {
   } else {
     res.status(201).json({ id: result.insertId, name, email, password });
   }
-}
+}*/
 // export const getUsers = async (req, res) => {
 //   try {
 //     //Consultar datos desde Supabase
