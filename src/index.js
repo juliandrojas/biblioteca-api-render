@@ -1,6 +1,21 @@
 import express from 'express';
+import morgan from 'morgan';
+import { PORT } from './config.js';
+import indexRoutes from './routes/index.routes.js';
 const app = express();
-app.listen(3000);
+app.listen(PORT);
+console.log("Server on port:",PORT);
+//Middlewares
+app.use(express.json());
+app.use(morgan('dev'));
+//Use the routes
+app.use(indexRoutes);
+//Not found route
+app.use((req, res, next) => {
+  res.status(404).json({
+    message: "Endpoint not found"
+  })
+})
 /*import cors from 'cors';
 import { config } from 'dotenv';
 import express from 'express';

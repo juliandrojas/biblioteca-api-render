@@ -1,11 +1,55 @@
-//import db from '../db/connection.js';
+import { pool } from "../db/connection.js";
+
 //Create
-export const create = (req, res) => {
-  res.send("Creando empleado")
-}
+export const create = async (req, res) => {
+  console.log(process.env.DB_HOST);
+  try {
+    const { name, email, password } = req.body;
+    console.log(name);
+    console.log(email);
+    console.log(password);
+    const sql = 'INSERT INTO `users`(`name`, `email`, `password`) VALUES (?. ?. ?)';
+    const values = [ name, email, password];
+    const [ result, fields ] = await pool.execute(sql, values);
+    console.log(result);
+    console.log(fields);
+    res.send({
+      id: rows.insertId,
+      name,
+      email, 
+      password
+    })
+  } catch (error) {
+    console.log(error);
+  }
+  /*try {
+    // Destructurando la solicitud
+    const { name, email, password } = req.body;
+    
+    // Consulta SQL y valores
+    const [ sql ] = await pool.query( 'INSERT INTO users (name, email, password) VALUES (?, ?, ?)', [name, email, password]);
+    //const values = [name, email, password];
+
+    // Ejecutando la consulta
+    //const [rows] = await pool.query(sql, values);
+
+    console.log("Creando empleado");
+
+    // Enviando la respuesta
+    res.send({
+      id: rows.insertId,
+      name,
+      email,
+      password
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Error interno del servidor'); // Puedes personalizar el mensaje de error y el código de estado según tus necesidades
+  }*/
+};
 //Read
 export const read = (req, res) => {
-  res.send("Obteniendo empleados")
+  res.send("Obteniendo empleados");
 }
 //Update
 export const update = (req, res) => {
